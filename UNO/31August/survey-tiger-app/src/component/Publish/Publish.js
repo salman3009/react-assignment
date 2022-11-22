@@ -1,6 +1,7 @@
 import './Publish.css';
 
-const Publish = ()=>{
+const Publish = ({questionCreation})=>{
+    console.log(questionCreation);
     return (<div>
         Hello publish
     </div>)

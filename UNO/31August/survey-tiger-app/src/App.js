@@ -74,7 +74,7 @@ function App() {
          </div>}
          {getStatus && getSelectionType === QuestionTypeLabel.single_type  && <SingleSelect QuestionCreation={QuestionCreation} onPublish={onPublish}/>}
          {getStatus && getSelectionType === QuestionTypeLabel.multi_type && <MultiSelect/>}
-         {!getStatus &&  <Publish/>}
+         {!getStatus &&  <Publish questionCreation={questionCreation}/>}
      </div>
   );
 }

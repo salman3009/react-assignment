@@ -24,7 +24,8 @@ const SingleSelect = ({QuestionCreation,onPublish}) => {
         if(getList.question && getList.optionOne && getList.optionTwo){
             let object = {
                 question:getList.question,
-                options:[getList.optionOne,getList.optionTwo]
+                options:[getList.optionOne,getList.optionTwo],
+                type:'radio'
             };
             QuestionCreation(object);
             setList({ question: '',
