@@ -5,6 +5,7 @@ import {singleQuestionType,multiQuestionType} from './helper/FormingObject';
 import SingleSelect from './component/custom/SingleSelect/SingleSelect';
 import MultiSelect from './component/custom/MultiSelect/MultiSelect';
 import {QuestionTypeLabel} from './helper/constant';
+import Publish from './component/Publish/Publish';
 function App() {
 
   const [getQuestionType,setQuestionType] = useState([]);
@@ -34,6 +35,10 @@ function App() {
   const QuestionCreation=(object)=>{
     console.log("app.js line 35",object);
     setQuestionCreation([...questionCreation,object]);
+  }
+
+  const onPublish=()=>{
+    setStatus(!getStatus);
   }
 
 
@@ -67,8 +72,9 @@ function App() {
                <QuestionType questionType={getQuestionType} selectedQuestionType={selectedQuestionType}/>
            </div>
          </div>}
-         {getStatus && getSelectionType === QuestionTypeLabel.single_type  && <SingleSelect QuestionCreation={QuestionCreation}/>}
+         {getStatus && getSelectionType === QuestionTypeLabel.single_type  && <SingleSelect QuestionCreation={QuestionCreation} onPublish={onPublish}/>}
          {getStatus && getSelectionType === QuestionTypeLabel.multi_type && <MultiSelect/>}
+         {!getStatus &&  <Publish/>}
      </div>
   );
 }

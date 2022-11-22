@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './SingleSelect.css';
 
 
-const SingleSelect = ({QuestionCreation}) => {
+const SingleSelect = ({QuestionCreation,onPublish}) => {
 
     const [getList, setList] = useState({
         question: '',
@@ -79,7 +79,7 @@ const SingleSelect = ({QuestionCreation}) => {
                             <button type="button" className="btn btn-success" onClick={onQuestionSubmit}>Add Question</button>
                         </div>
                         <div className="col-3">
-                            <button type="button" className="btn btn-success">Publish</button>
+                            <button type="button" className="btn btn-success" onClick={onPublish}>Publish</button>
                         </div>
                         <div className="col-3"></div>
                     </div>
