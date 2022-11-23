@@ -1,6 +1,21 @@
+import { useEffect, useState } from 'react';
 import './MultiSelect.css';
 
 const MultiSelect=()=>{
+
+    const [getList,setList] = useState({
+        question:'',
+        options:[{id:0,value:''}]
+    });
+
+    useEffect(()=>{
+       console.log(getList);
+    },[getList])
+
+    const onChangeHandler=(event)=>{
+        setList({...getList,[event.target.name]:event.target.value})
+    }
+
     return (<div className="container">
     <div className="row">
         <div className="col-3"></div>
@@ -10,7 +25,7 @@ const MultiSelect=()=>{
                     <div class="input-group-prepend">
                         <div class="input-group-text">?</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" />
+                    <input type="text" class="form-control"  name="question" onChange={onChangeHandler} />
                 </div>
             </div>
             <div class="col-auto">
