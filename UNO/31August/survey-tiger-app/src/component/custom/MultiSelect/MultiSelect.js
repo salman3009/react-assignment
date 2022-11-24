@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './MultiSelect.css';
 
-const MultiSelect=()=>{
+const MultiSelect=({QuestionCreation,onPublish})=>{
 
     const [getList,setList] = useState({
         question:'',
@@ -43,6 +43,21 @@ const MultiSelect=()=>{
         setList({...getList,options:list});
     }
 
+    const onQuestionSubmit=()=>{
+        if(getList.question){
+            let object = {
+                question:getList.question,
+                options:getList.options,
+                type:'checkbox'
+            };
+            QuestionCreation(object);
+            setList({
+                question:'',
+                options:[{id:1,value:''}]
+            });
+        }
+    }
+
     return (<div className="container">
     <div className="row">
         <div className="col-3"></div>
@@ -68,7 +83,20 @@ const MultiSelect=()=>{
                 </div>
             </div>)
             })}
+               <div className="col-auto">
+                    <div className="row">
+                        <div className="col-3"></div>
+                        <div className="col-3">
+                            <button type="button" className="btn btn-success" onClick={onQuestionSubmit}>Add Question</button>
+                        </div>
+                        <div className="col-3">
+                            <button type="button" className="btn btn-success" onClick={onPublish}>Publish</button>
+                        </div>
+                        <div className="col-3"></div>
+                    </div>
+                </div>
         </div>
+     
         <div className="col-3"></div>
     </div>
 </div>)

@@ -11,10 +11,16 @@ const Publish = ({ questionCreation }) => {
                     </div>
                     <div className="col-6">
                         <h1>{object.question}</h1>
-                        {object.options.map((input,i) => {
+                        {object.type==="radio" && object.options.map((input,i) => {
                             return ( <div key={i} className="form-check form-check-inline">
                             <input className="form-check-input" type="radio" name="inlineRadioOptions" value="option1" />
                             <label className="form-check-label">{input}</label>
+                        </div>)   
+                        })}
+                           {object.type==="checkbox" && object.options.map((input,i) => {
+                            return ( <div key={i} className="form-check form-check-inline">
+                            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" value="option1" />
+                            <label className="form-check-label">{input.value}</label>
                         </div>)   
                         })}
                     </div>
