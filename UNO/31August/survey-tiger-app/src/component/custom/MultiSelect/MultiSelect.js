@@ -5,7 +5,7 @@ const MultiSelect=()=>{
 
     const [getList,setList] = useState({
         question:'',
-        options:[{id:1,value:''},{id:2,value:''}]
+        options:[{id:1,value:''}]
     });
 
     useEffect(()=>{
@@ -27,6 +27,22 @@ const MultiSelect=()=>{
         setList({...getList,options:list});
     }
 
+    const onRemoveHandler=(index)=>{
+       if(getList.options.length<=1){
+               return ;
+       }
+       let list =[...getList.options];
+       list.splice(index,1);
+       setList({...getList,options:list});
+    }
+
+    const onOptionChangeHandler=(event,index)=>{
+        console.log(event.target.value,index);
+        let list =[...getList.options];
+        list[index].value = event.target.value;
+        setList({...getList,options:list});
+    }
+
     return (<div className="container">
     <div className="row">
         <div className="col-3"></div>
@@ -42,12 +58,12 @@ const MultiSelect=()=>{
             {getList.options.map((obj,index)=>{
                 return(<div key={index} class="col-auto">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username" />
+                    <input type="text" class="form-control" value={obj.value} onChange={(event)=>onOptionChangeHandler(event,index)} />
                     <div class="input-group-prepend">
                         <div class="input-group-text" onClick={onAdditionHandler}>+</div>
                     </div>
                     <div class="input-group-prepend">
-                        <div class="input-group-text">-</div>
+                        <div class="input-group-text" onClick={()=>onRemoveHandler(index)}>-</div>
                     </div>
                 </div>
             </div>)
