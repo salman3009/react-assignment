@@ -34,7 +34,11 @@ function App() {
 
   const QuestionCreation=(object)=>{
     console.log("app.js line 35",object);
-    setQuestionCreation([...questionCreation,object]);
+    let payload = object.type === 'radio'?singleQuestionType:multiQuestionType;
+    payload.type = object.type;
+    payload.question = object.question;
+    payload.options = object.options;
+    setQuestionCreation([...questionCreation,payload]);
   }
 
   const onPublish=()=>{

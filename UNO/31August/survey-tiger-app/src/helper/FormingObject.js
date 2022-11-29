@@ -1,12 +1,7 @@
 export const singleQuestionType={
   type:'single',
   questionName:'',
-  options:[
-      {
-          id:1,
-          optionName:''
-      }
-  ],
+  options:[],
   min:1,
   max:10
 }
@@ -14,13 +9,8 @@ export const singleQuestionType={
 
 export const multiQuestionType={
     type:'multi',
-    questionName:'',
-    options:[
-        {
-            id:1,
-            optionName:''
-        }
-    ],
+    question:'',
+    options:[],
     max:4,
     min:1
   }
