@@ -1,7 +1,19 @@
 const exp = require('express');
 const app = exp();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost/uno").then(()=>{
+    console.log("connected successfully");
+}).catch(()=>{
+    console.log("connection failed");
+});
+
+app.use(bodyParser.json());
 
 console.log("hello world");
+
+
 
 app.get('',(req,res)=>{
         res.status(200).json({
