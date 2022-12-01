@@ -2,6 +2,7 @@ const exp = require('express');
 const app = exp();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const Post = require('./models/Post');
 
 mongoose.connect("mongodb://localhost/uno").then(()=>{
     console.log("connected successfully");
@@ -23,8 +24,21 @@ app.get('',(req,res)=>{
 
 app.post('',(req,res)=>{
      console.log(req.body);
-     res.status(201).json({
-        message:"added data"
+     const result = new Post({
+        employee: req.body.employee,
+        salary:Number(req.body.salary),
+        status:req.body.status
+     });
+     result.save().then((result)=>{
+        res.status(201).json({
+            message:"added data",
+            list:result
+         })
+     }).catch((err)=>{
+        res.status(400).json({
+            message:"error response",
+            list:err
+         })
      })
 });
 
