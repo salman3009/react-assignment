@@ -50,3 +50,15 @@ export default App;
 Rules of Reactjs 
 1.whenever you want to use html inside jsx - () 
 2.whenever you want to use javascript  inside jsx-{}
+======================================
+To get the data from forms;
+1.by using useState 
+2.by using useRef 
+hooks:
+1.useState 
+2.useRef 
+3.useReducer 
+4.useCallback 
+5.useEffect 
+6.useMemo 
+7.useContext 
