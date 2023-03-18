@@ -62,3 +62,7 @@ hooks:
 5.useEffect 
 6.useMemo 
 7.useContext 
+===========================
+Props 
+from parent to child you can pass props normally by giving attribute 
+from child to parent you can pass methods 

@@ -1,6 +1,6 @@
 import {useRef} from 'react';
 
-const Form=()=>{
+const Form=(props)=>{
       
       const fullName = useRef(null);
 
@@ -10,6 +10,7 @@ const Form=()=>{
            alert("submit");
            console.log(fullName.current.value);
            console.log(date.current.value);
+           props.changeHandler({name:fullName.current.value,date:new Date(date.current.value)})
        }
        return (<div>
           <input type="text" name="details" ref={fullName}/>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Form  from "./Form";
 import List from "./List";
 
@@ -9,9 +10,15 @@ const list=[{
 
 const App=()=>{
 
+       const [getList,setList] = useState(list)
+
+       const appendDetails=(obj)=>{
+            setList([...getList,obj]);
+       } 
+
        return(<div>
-        <Form/>
-        <List filterList={list}/>
+        <Form changeHandler={appendDetails}/>
+        <List filterList={getList}/>
         {2+2}
         {list.length>0?"yes":"no"}
         {list.length && (<div>
